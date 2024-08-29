@@ -15,3 +15,9 @@ To test your configuration simply run the following command
 ```
 nix run .
 ```
+
+or run directly from github
+
+```
+nix run github:dbellotti/nixvim .
+```
