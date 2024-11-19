@@ -4,10 +4,10 @@
     #./bufferline.nix
   ];
 
+  colorschemes.catppuccin.enable = true;
+  #colorschemes.tokyonight.enable = true;
   #colorschemes.gruvbox.enable = true;
   #colorschemes.nord.enable = true;
-  colorschemes.tokyonight.enable = true;
-  #colorschemes.catppuccin.enable = true;
   #colorschemes.onedark.enable = true;
 
   globals.mapleader = ",";
@@ -37,7 +37,7 @@
       enable = true;
       settings = {
         highlight.enable = true;
-        indent.enable = true;
+        # indent.enable = true; # appears to not work
       };
     };
 
@@ -58,11 +58,13 @@
       };
     };
 
+    # language servers
     lsp = {
       enable = true;
       servers = {
         nixd.enable = true;
         pyright.enable = true;
+        ts_ls.enable = true;
       };
 
       # TODO figure out how to do code_actions
@@ -77,24 +79,31 @@
       #};
     };
 
+    # formatting and linting
+    #none-ls = {
+    #  enable = true;
+    #  settings = {
+    #  };
+    #};
+
+    # completions
     cmp = {
       enable = true;
       autoEnableSources = true;
       settings = {
         sources = [
           { name = "nvim_lsp"; }
-          #{ name = "luasnip"; }
           { name = "path"; }
           { name = "buffer"; }
+          { name = "treesitter"; }
+          { name = "luasnip"; }
         ];
       };
     };
 
-    # verify the following that seemed interesting
-    # not sure what each is doing (i'd like to demo)
-    #cmp-treesitter.enable = true;
-    #cmp-nvim-lsp.enable = true;
     #cmp-spell.enable = true;
     #cmp-dictionary.enable = true;
+
+    friendly-snippets.enable = true;
   };
 }
